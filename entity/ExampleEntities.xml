@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
-    <entity entity-name="Example" package="Example">
+    <entity entity-name="Example" package="example">
         <field name="exampleId" type="id" is-pk="true"/>
         <field name="exampleName" type="text-medium"/>
         <field name="exampleDate" type="date"/>
