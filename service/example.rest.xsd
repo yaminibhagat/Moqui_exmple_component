@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="resource" type="resourceType">
+        <xs:annotation>
+            <xs:documentation>This software is in the public domain under CC0 1.0 Universal plus a
+                Grant of Patent License.
+
+                To the extent possible under law, the author(s) have dedicated all
+                copyright and related and neighboring rights to this software to the
+                public domain worldwide. This software is distributed without any
+                warranty.
+
+                You should have received a copy of the CC0 Public Domain Dedication
+                along with this software (see the LICENSE.md file). If not, see
+                &lt;http://creativecommons.org/publicdomain/zero/1.0/>.
+                General Guideline Verbs: GET=find, POST=create, PUT=store (create or update), PATCH=update, DELETE=delete</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="entityType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="name" use="optional"/>
+                <xs:attribute type="xs:string" name="operation" use="optional"/>
+                <xs:attribute type="xs:string" name="masterName" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="methodType">
+        <xs:sequence>
+            <xs:element type="entityType" name="entity" minOccurs="0"/>
+            <xs:element type="serviceType" name="service" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="type" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="serviceType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="name" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="idType">
+        <xs:sequence>
+            <xs:element type="methodType" name="method" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="idType" name="id" minOccurs="0"/>
+            <xs:element type="resourceType" name="resource" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="resourceType">
+        <xs:sequence>
+            <xs:element type="methodType" name="method" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="idType" name="id" minOccurs="0"/>
+            <xs:element type="resourceType" name="resource" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="displayName" use="optional"/>
+        <xs:attribute type="xs:string" name="version" use="optional"/>
+    </xs:complexType>
+</xs:schema>

@@ -4,8 +4,16 @@
     <entity entity-name="Example" package="example">
         <field name="exampleId" type="id" is-pk="true"/>
         <field name="exampleName" type="text-medium"/>
-        <field name="exampleDate" type="date"/>
+        <field name="exampleDate" type="text-medium"/>
         <field name="examplePrice" type="number-integer"/>
         <field name="exampleQuantity" type="number-integer"/>
     </entity>
+
+    <entity entity-name="User" package="example">
+        <field name="exampleId" type="id" is-pk="true"/>
+        <field name="exampleName" type="text-medium"/>
+    </entity>
+
+
+
 </entities>
